@@ -68,8 +68,9 @@
             // toolStripCancelar
             // 
             this.toolStripCancelar.Name = "toolStripCancelar";
-            this.toolStripCancelar.Size = new System.Drawing.Size(53, 22);
-            this.toolStripCancelar.Text = "Cancelar";
+            this.toolStripCancelar.Size = new System.Drawing.Size(50, 22);
+            this.toolStripCancelar.Text = "Eliminar";
+            this.toolStripCancelar.Click += new System.EventHandler(this.toolStripCancelar_Click);
             // 
             // dgvCine
             // 

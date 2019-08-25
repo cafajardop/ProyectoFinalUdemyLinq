@@ -104,39 +104,40 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // empleadoToolStripMenuItem
             // 
             this.empleadoToolStripMenuItem.Name = "empleadoToolStripMenuItem";
-            this.empleadoToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.empleadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadoToolStripMenuItem.Text = "Empleado";
             // 
             // cineToolStripMenuItem
             // 
             this.cineToolStripMenuItem.Name = "cineToolStripMenuItem";
-            this.cineToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.cineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cineToolStripMenuItem.Text = "Cine";
             this.cineToolStripMenuItem.Click += new System.EventHandler(this.cineToolStripMenuItem_Click);
             // 
             // salaToolStripMenuItem
             // 
             this.salaToolStripMenuItem.Name = "salaToolStripMenuItem";
-            this.salaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.salaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salaToolStripMenuItem.Text = "Sala";
             // 
             // peliculaToolStripMenuItem
             // 
             this.peliculaToolStripMenuItem.Name = "peliculaToolStripMenuItem";
-            this.peliculaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.peliculaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.peliculaToolStripMenuItem.Text = "Pelicula";
+            this.peliculaToolStripMenuItem.Click += new System.EventHandler(this.peliculaToolStripMenuItem_Click);
             // 
             // funcionToolStripMenuItem
             // 
             this.funcionToolStripMenuItem.Name = "funcionToolStripMenuItem";
-            this.funcionToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.funcionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionToolStripMenuItem.Text = "Función";
             // 
             // procesosToolStripMenuItem

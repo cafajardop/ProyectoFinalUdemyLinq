@@ -29,5 +29,10 @@ namespace ProyectoFinalUdemyLinq
             ofrmMantenimientoCine.ShowDialog();
 
         }
+
+        private void peliculaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

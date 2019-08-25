@@ -31,6 +31,7 @@ namespace ProyectoFinalUdemyLinq
                 var consulta = bd.CINE.Where(p => p.IDCINE.Equals(id));
                 foreach (CINE ocine in consulta)
                 {
+                    txtid.Text = ocine.IDCINE.ToString();
                     txtNombre.Text = ocine.NOMBRE;
                     txtDireccion.Text = ocine.DIRECCION;
                     txtFechaApertura.Value = DateTime.Parse(ocine.FECHAAPERTURA.ToString());
@@ -38,7 +39,88 @@ namespace ProyectoFinalUdemyLinq
                 }
 
             }
+            else
+            {
+                this.Text = "Agregar Cine";
+            }
+        }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text.Equals(""))
+            {
+                ErrorDatos.SetError(txtNombre, "Ingrese Nombre");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+            else
+            {
+                ErrorDatos.SetError(txtNombre, "");
+            }
+
+            if (txtDireccion.Text.Equals(""))
+            {
+                ErrorDatos.SetError(txtDireccion, "Ingrese Dirección");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+            else
+            {
+                ErrorDatos.SetError(txtDireccion, "");
+            }
+            string id = txtid.Text;
+            string nombre = txtNombre.Text;
+            int idTipoCine = int.Parse(cboTipoCine.SelectedValue.ToString());
+            string direccion = txtDireccion.Text;
+            DateTime fechaApertura = txtFechaApertura.Value;
+            if (accion.Equals("Nuevo"))
+            {
+                int nveces = (bd.CINE.Where(p => p.NOMBRE.Equals(txtNombre.Text))).Count();
+                if (nveces > 0)
+                {
+                    MessageBox.Show("Ya existe el cine");
+                    return;
+
+                }
+                CINE ocine = new CINE()
+                {
+                    NOMBRE = nombre,
+                    IDTIPOCINE = idTipoCine,
+                    DIRECCION = direccion,
+                    FECHAAPERTURA = fechaApertura,
+                    BHABILITADO = 1
+                };
+                bd.CINE.InsertOnSubmit(ocine);
+                try
+                {
+                    bd.SubmitChanges();
+                    MessageBox.Show("Se agrego correctamente!");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ocurrio un error");
+                }
+            }
+            else
+            {
+                var consulta = bd.CINE.Where(p => p.IDCINE.Equals(id));
+                foreach (CINE ocine in consulta)
+                {
+                    ocine.NOMBRE = nombre;
+                    ocine.IDTIPOCINE = idTipoCine;
+                    ocine.DIRECCION = direccion;
+                    ocine.FECHAAPERTURA = fechaApertura;
+                }
+                try
+                {
+                    bd.SubmitChanges();
+                    MessageBox.Show("Se edito correctamente");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ocurrio un error");
+                }
+            }
         }
     }
 }
