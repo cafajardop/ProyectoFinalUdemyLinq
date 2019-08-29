@@ -115,8 +115,22 @@ namespace ProyectoFinalUdemyLinq
                 int numero = (bd.CLIENTE.Where(p => p.DNICLIENTE.Equals(dni))).Count();
                 if (numero > 0)
                 {
-                    MessageBox.Show("La cedula ya existe en la base de datos");
-                    return;
+                    var consulta = bd.CLIENTE.Where(p => p.DNICLIENTE.Equals(dni));
+                    foreach (CLIENTE clie in consulta)
+                    {
+                        clie.BHABILITADO = true;
+                    }
+                    try
+                    {
+                        bd.SubmitChanges();
+                        MessageBox.Show("El usuario ya existe se habilita nuevamente!!");
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Ocurrio un error verique " + ex);
+                    }
                 }
 
                 //Nuevo
