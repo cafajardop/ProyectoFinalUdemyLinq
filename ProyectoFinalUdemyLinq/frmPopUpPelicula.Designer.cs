@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdPelicula = new System.Windows.Forms.TextBox();
             this.txtTitulo = new System.Windows.Forms.TextBox();
@@ -46,6 +47,8 @@
             this.cmbTipoCensura = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.errorDato = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorDato)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,8 +116,9 @@
             this.txtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtFecha.Location = new System.Drawing.Point(230, 123);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(200, 20);
+            this.txtFecha.Size = new System.Drawing.Size(121, 20);
             this.txtFecha.TabIndex = 10;
+            this.txtFecha.Value = new System.DateTime(2019, 8, 29, 0, 0, 0, 0);
             // 
             // cmbPais
             // 
@@ -183,21 +187,28 @@
             // 
             // btnAceptar
             // 
+            this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAceptar.Location = new System.Drawing.Point(128, 402);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 19;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(256, 402);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // errorDato
+            // 
+            this.errorDato.ContainerControl = this;
             // 
             // frmPopUpPelicula
             // 
@@ -223,7 +234,9 @@
             this.Controls.Add(this.txtIdPelicula);
             this.Controls.Add(this.label1);
             this.Name = "frmPopUpPelicula";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPopUpPelicula_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorDato)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +262,6 @@
         private System.Windows.Forms.ComboBox cmbTipoCensura;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ErrorProvider errorDato;
     }
 }

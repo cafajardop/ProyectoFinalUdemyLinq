@@ -32,7 +32,8 @@ namespace ProyectoFinalUdemyLinq
 
         private void peliculaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmMantenimientoPelicula ofrmMantenimientoPelicula = new frmMantenimientoPelicula();
+            ofrmMantenimientoPelicula.ShowDialog();
         }
     }
 }
