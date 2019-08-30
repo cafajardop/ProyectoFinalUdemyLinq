@@ -22,6 +22,10 @@ namespace ProyectoFinalUdemyLinq
             frmPopUpPelicula ofrmPopUpPelicula = new frmPopUpPelicula();
             ofrmPopUpPelicula.accion = "Nuevo";
             ofrmPopUpPelicula.ShowDialog();
+            if (ofrmPopUpPelicula.DialogResult.Equals(DialogResult.OK))
+            {
+                listar();
+            }
         }
 
         private void ToolStripLabel2_Click(object sender, EventArgs e)
@@ -30,6 +34,10 @@ namespace ProyectoFinalUdemyLinq
             ofrmPopUpPelicula.accion = "Editar";
             ofrmPopUpPelicula.id = dgvPelicula.CurrentRow.Cells[0].Value.ToString();
             ofrmPopUpPelicula.ShowDialog();
+            if (ofrmPopUpPelicula.DialogResult.Equals(DialogResult.OK))
+            {
+                listar();
+            }
         }
 
         private void FrmMantenimientoPelicula_Load(object sender, EventArgs e)
@@ -62,6 +70,29 @@ namespace ProyectoFinalUdemyLinq
                    p.SINOPSIS,
                    p.DURACION
                }).ToList();
+        }
+
+        private void ToolStripLabel3_Click(object sender, EventArgs e)
+        {
+            string id = dgvPelicula.CurrentRow.Cells[0].Value.ToString();
+            var consulta = bd.PELICULA.Where(p => p.IDPELICULA.Equals(id));
+            if (MessageBox.Show("Desea Eliminar el registro?", "Aviso", MessageBoxButtons.YesNo).Equals(DialogResult.Yes))
+            {
+                foreach (PELICULA item in consulta)
+                {
+                    item.BHABILITADO = false;
+                }
+                try
+                {
+                    bd.SubmitChanges();
+                    listar();
+                    MessageBox.Show("Se elimino el registro");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ocurrio un error");
+                }
+            }
         }
     }
 }
