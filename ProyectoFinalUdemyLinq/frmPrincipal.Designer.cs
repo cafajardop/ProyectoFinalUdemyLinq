@@ -126,6 +126,7 @@
             this.salaToolStripMenuItem.Name = "salaToolStripMenuItem";
             this.salaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salaToolStripMenuItem.Text = "Sala";
+            this.salaToolStripMenuItem.Click += new System.EventHandler(this.SalaToolStripMenuItem_Click);
             // 
             // peliculaToolStripMenuItem
             // 

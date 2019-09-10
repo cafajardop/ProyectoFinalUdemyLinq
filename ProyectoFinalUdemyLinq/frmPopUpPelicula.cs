@@ -93,6 +93,7 @@ namespace ProyectoFinalUdemyLinq
             }
 
             int duracion = int.Parse(txtDuracion.Text);
+
             int idTipoCensura = int.Parse(cmbTipoCensura.SelectedValue.ToString());
 
             if (accion.Equals("Nuevo"))

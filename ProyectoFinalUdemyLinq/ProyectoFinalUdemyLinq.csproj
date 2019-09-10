@@ -80,6 +80,12 @@
     <Compile Include="frmMantenimientoPelicula.Designer.cs">
       <DependentUpon>frmMantenimientoPelicula.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMantenimientoSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoSala.Designer.cs">
+      <DependentUpon>frmMantenimientoSala.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="frmPopUpPelicula.Designer.cs">
       <DependentUpon>frmPopUpPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupSala.Designer.cs">
+      <DependentUpon>FrmPopupSala.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -120,6 +132,9 @@
     <EmbeddedResource Include="frmMantenimientoPelicula.resx">
       <DependentUpon>frmMantenimientoPelicula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoSala.resx">
+      <DependentUpon>frmMantenimientoSala.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPopup.resx">
       <DependentUpon>frmPopup.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopUpPelicula.resx">
       <DependentUpon>frmPopUpPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupSala.resx">
+      <DependentUpon>FrmPopupSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
