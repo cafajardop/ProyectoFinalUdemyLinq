@@ -34,6 +34,10 @@ namespace ProyectoFinalUdemyLinq
             oFrmPopupSala.accion = "Editar";
             oFrmPopupSala.id = dgvSala.CurrentRow.Cells[0].Value.ToString();
             oFrmPopupSala.ShowDialog();
+            if (oFrmPopupSala.DialogResult.Equals(DialogResult.OK))
+            {
+                listar();
+            }
         }
         PruebaDataContext bd = new PruebaDataContext();
         private void listar()
@@ -44,6 +48,7 @@ namespace ProyectoFinalUdemyLinq
                                   where sala.BHABILITADO.Equals(1)
                                   select new
                                   {
+                                      sala.IDSALA,
                                       cine.NOMBRE,
                                       sala.NUMBUTACAS,
                                       sala.NUMEROCOLUMNAS,
@@ -68,11 +73,36 @@ namespace ProyectoFinalUdemyLinq
                                   where sala.BHABILITADO.Equals(1) && sala.IDCINE.Equals(idcine)
                                   select new
                                   {
+                                      sala.IDSALA,
                                       cine.NOMBRE,
                                       sala.NUMBUTACAS,
                                       sala.NUMEROCOLUMNAS,
                                       sala.NUMEROFILAS
                                   }).ToList();
+        }
+
+        private void ToolStripEliminar_Click(object sender, EventArgs e)
+        {
+            string id = dgvSala.CurrentRow.Cells[0].Value.ToString();
+            if(MessageBox.Show("Desea eliminar?","Aviso",MessageBoxButtons.YesNo).Equals(DialogResult.Yes))
+            {
+                var consulta = bd.SALA.Where(p => p.IDSALA.Equals(id));
+                foreach (SALA osala in consulta)
+                {
+                    osala.BHABILITADO = false;
+                }
+                try
+                {
+                    bd.SubmitChanges();
+                    listar();
+                    MessageBox.Show("Se elimino correctamente");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrio un error");
+                }
+
+            }
         }
     }
 }

@@ -25,14 +25,55 @@ namespace ProyectoFinalUdemyLinq
             cmbNombre.DataSource = bd.CINE.ToList();
             cmbNombre.DisplayMember = "NOMBRE";
             cmbNombre.ValueMember = "IDCINE";
+            if (accion.Equals("Editar"))
+            {
+                var consulta = bd.SALA.Where(p => p.IDSALA.Equals(id));
+                foreach (SALA osala in consulta)
+                {
+                    cmbNombre.SelectedValue = osala.IDCINE;
+                    txtNumeroSillas.Value = decimal.Parse(osala.NUMBUTACAS.ToString());
+                    txtNumeroFilas.Value = decimal.Parse(osala.NUMEROFILAS.ToString());
+                    txtNumeroColumnas.Value = decimal.Parse(osala.NUMEROCOLUMNAS.ToString());
+                }
+            }
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             int idcine = int.Parse(cmbNombre.SelectedValue.ToString());
             int numeroButacas = int.Parse(txtNumeroSillas.Value.ToString());
+            if (numeroButacas <= 0)
+            {
+                errorDatos.SetError(txtNumeroSillas, "El numero de sillas tiene que ser mayor a cero");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+            else
+            {
+                errorDatos.SetError(txtNumeroSillas, "");
+            }
             int numeroFilas = int.Parse(txtNumeroFilas.Value.ToString());
+            if (numeroFilas <= 0)
+            {
+                errorDatos.SetError(txtNumeroFilas, "El numero de filas tiene que ser mayor a cero");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+            else
+            {
+                errorDatos.SetError(txtNumeroFilas, "");
+            }
             int numeroColumnas = int.Parse(txtNumeroColumnas.Value.ToString());
+            if (numeroColumnas <= 0)
+            {
+                errorDatos.SetError(txtNumeroColumnas, "El numero de columnas tiene que ser mayor a cero");
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+            else
+            {
+                errorDatos.SetError(txtNumeroColumnas, "");
+            }
             if (accion.Equals("Nuevo"))
             {
                 SALA osala = new SALA()
@@ -56,7 +97,23 @@ namespace ProyectoFinalUdemyLinq
             }
             else
             {
-
+                var consulta = bd.SALA.Where(p => p.IDSALA.Equals(id));
+                foreach (SALA osala in consulta)
+                {
+                    osala.IDCINE = idcine;
+                    osala.NUMBUTACAS = numeroButacas;
+                    osala.NUMEROFILAS = numeroFilas;
+                    osala.NUMEROCOLUMNAS = numeroColumnas;
+                }
+                try
+                {
+                    bd.SubmitChanges();
+                    MessageBox.Show("Se edito correctamente");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ocurrio un error");
+                }
 
             }
         }

@@ -44,6 +44,8 @@
             this.dgvSala.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSala.Location = new System.Drawing.Point(29, 150);
             this.dgvSala.Name = "dgvSala";
+            this.dgvSala.ReadOnly = true;
+            this.dgvSala.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSala.Size = new System.Drawing.Size(740, 271);
             this.dgvSala.TabIndex = 0;
             // 
@@ -96,6 +98,7 @@
             this.toolStripEliminar.Name = "toolStripEliminar";
             this.toolStripEliminar.Size = new System.Drawing.Size(50, 22);
             this.toolStripEliminar.Text = "Eliminar";
+            this.toolStripEliminar.Click += new System.EventHandler(this.ToolStripEliminar_Click);
             // 
             // frmMantenimientoSala
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,9 +39,11 @@
             this.txtNumeroColumnas = new System.Windows.Forms.NumericUpDown();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.errorDatos = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroSillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroFilas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroColumnas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,6 +132,10 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // errorDatos
+            // 
+            this.errorDatos.ContainerControl = this;
+            // 
             // FrmPopupSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +158,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroSillas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroFilas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroColumnas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +176,6 @@
         private System.Windows.Forms.NumericUpDown txtNumeroColumnas;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ErrorProvider errorDatos;
     }
 }
