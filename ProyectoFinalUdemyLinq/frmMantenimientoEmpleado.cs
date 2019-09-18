@@ -22,14 +22,24 @@ namespace ProyectoFinalUdemyLinq
             frmPopupEmpleado ofrmPopupEmpleado = new frmPopupEmpleado();
             ofrmPopupEmpleado.accion = "Nuevo";
             ofrmPopupEmpleado.ShowDialog();
+            if(ofrmPopupEmpleado.DialogResult.Equals(DialogResult.OK))
+            {
+                listar();
+            }
         }
-
+         
         private void ToolStripLabel2_Click(object sender, EventArgs e)
         {
             frmPopupEmpleado ofrmPopupEmpleado = new frmPopupEmpleado();
             ofrmPopupEmpleado.accion = "Editar";
             ofrmPopupEmpleado.id = dgvEmpleado.CurrentRow.Cells[0].Value.ToString();
+            ofrmPopupEmpleado.lblContraseña.Visible = false;
+            ofrmPopupEmpleado.txtContraseña.Visible = false; 
             ofrmPopupEmpleado.ShowDialog();
+            if (ofrmPopupEmpleado.DialogResult.Equals(DialogResult.OK))
+            {
+                listar();
+            }
         }
 
         private void FrmMantenimientoEmpleado_Load(object sender, EventArgs e)
@@ -61,6 +71,31 @@ namespace ProyectoFinalUdemyLinq
                     p.APMATERNO,
                     p.FECHAINICIO
                 }).ToList();
+        }
+
+        private void ToolStripLabel3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Eliminar?", "Aviso", MessageBoxButtons.YesNo).Equals(DialogResult.Yes))
+            {
+                string id = dgvEmpleado.CurrentRow.Cells[0].Value.ToString();
+                var consulta = bd.EMPLEADO.Where(p => p.IDEMPLEADO.Equals(id));
+                foreach (EMPLEADO emp in consulta)
+                {
+                    emp.BHABILITADO = false;
+                }
+                try
+                {
+                    bd.SubmitChanges();
+                    listar();
+                    MessageBox.Show("Se elimino correctamente"); 
+                }
+                catch (Exception ex )
+                {
+
+                    throw;
+                }
+
+            }
         }
     }
 }

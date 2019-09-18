@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,7 +37,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblContraseña = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPrimerApellido = new System.Windows.Forms.TextBox();
             this.txtSegundoApellido = new System.Windows.Forms.TextBox();
@@ -48,6 +49,8 @@
             this.cmbTipoEmpleado = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.errorData = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorData)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -122,14 +125,14 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Usuario";
             // 
-            // label9
+            // lblContraseña
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 280);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Contraseña";
+            this.lblContraseña.AutoSize = true;
+            this.lblContraseña.Location = new System.Drawing.Point(50, 280);
+            this.lblContraseña.Name = "lblContraseña";
+            this.lblContraseña.Size = new System.Drawing.Size(61, 13);
+            this.lblContraseña.TabIndex = 8;
+            this.lblContraseña.Text = "Contraseña";
             // 
             // txtNombre
             // 
@@ -172,6 +175,7 @@
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(140, 20);
             this.txtContraseña.TabIndex = 17;
+            this.txtContraseña.UseSystemPasswordChar = true;
             // 
             // txtFecha
             // 
@@ -206,6 +210,7 @@
             this.btnAceptar.TabIndex = 21;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -216,6 +221,10 @@
             this.btnCancelar.TabIndex = 22;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // errorData
+            // 
+            this.errorData.ContainerControl = this;
             // 
             // frmPopupEmpleado
             // 
@@ -233,7 +242,7 @@
             this.Controls.Add(this.txtSegundoApellido);
             this.Controls.Add(this.txtPrimerApellido);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -248,6 +257,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPopupEmpleado";
             this.Load += new System.EventHandler(this.FrmPopupEmpleado_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,17 +273,18 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtPrimerApellido;
         private System.Windows.Forms.TextBox txtSegundoApellido;
         private System.Windows.Forms.TextBox txtSueldo;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.DateTimePicker txtFecha;
         private System.Windows.Forms.ComboBox cmbTipoModalidad;
         private System.Windows.Forms.ComboBox cmbTipoEmpleado;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ErrorProvider errorData;
+        public System.Windows.Forms.Label lblContraseña;
+        public System.Windows.Forms.TextBox txtContraseña;
     }
 }
