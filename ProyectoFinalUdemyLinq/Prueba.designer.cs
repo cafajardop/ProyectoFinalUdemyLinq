@@ -63,9 +63,6 @@ namespace ProyectoFinalUdemyLinq
     partial void InsertRESERVA(RESERVA instance);
     partial void UpdateRESERVA(RESERVA instance);
     partial void DeleteRESERVA(RESERVA instance);
-    partial void InsertSALA(SALA instance);
-    partial void UpdateSALA(SALA instance);
-    partial void DeleteSALA(SALA instance);
     partial void InsertSEXO(SEXO instance);
     partial void UpdateSEXO(SEXO instance);
     partial void DeleteSEXO(SEXO instance);
@@ -84,6 +81,9 @@ namespace ProyectoFinalUdemyLinq
     partial void InsertTIPOMODALIDAD(TIPOMODALIDAD instance);
     partial void UpdateTIPOMODALIDAD(TIPOMODALIDAD instance);
     partial void DeleteTIPOMODALIDAD(TIPOMODALIDAD instance);
+    partial void InsertSALA(SALA instance);
+    partial void UpdateSALA(SALA instance);
+    partial void DeleteSALA(SALA instance);
     #endregion
 		
 		public PruebaDataContext() : 
@@ -204,14 +204,6 @@ namespace ProyectoFinalUdemyLinq
 			}
 		}
 		
-		public System.Data.Linq.Table<SALA> SALA
-		{
-			get
-			{
-				return this.GetTable<SALA>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SEXO> SEXO
 		{
 			get
@@ -257,6 +249,14 @@ namespace ProyectoFinalUdemyLinq
 			get
 			{
 				return this.GetTable<TIPOMODALIDAD>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SALA> SALA
+		{
+			get
+			{
+				return this.GetTable<SALA>();
 			}
 		}
 	}
@@ -3476,257 +3476,6 @@ namespace ProyectoFinalUdemyLinq
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SALA")]
-	public partial class SALA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDSALA;
-		
-		private System.Nullable<int> _IDCINE;
-		
-		private System.Nullable<int> _NUMBUTACAS;
-		
-		private System.Nullable<int> _NUMEROFILAS;
-		
-		private System.Nullable<int> _NUMEROCOLUMNAS;
-		
-		private System.Nullable<bool> _BHABILITADO;
-		
-		private EntitySet<FUNCION> _FUNCION;
-		
-		private EntityRef<CINE> _CINE;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDSALAChanging(int value);
-    partial void OnIDSALAChanged();
-    partial void OnIDCINEChanging(System.Nullable<int> value);
-    partial void OnIDCINEChanged();
-    partial void OnNUMBUTACASChanging(System.Nullable<int> value);
-    partial void OnNUMBUTACASChanged();
-    partial void OnNUMEROFILASChanging(System.Nullable<int> value);
-    partial void OnNUMEROFILASChanged();
-    partial void OnNUMEROCOLUMNASChanging(System.Nullable<int> value);
-    partial void OnNUMEROCOLUMNASChanged();
-    partial void OnBHABILITADOChanging(System.Nullable<bool> value);
-    partial void OnBHABILITADOChanged();
-    #endregion
-		
-		public SALA()
-		{
-			this._FUNCION = new EntitySet<FUNCION>(new Action<FUNCION>(this.attach_FUNCION), new Action<FUNCION>(this.detach_FUNCION));
-			this._CINE = default(EntityRef<CINE>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDSALA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IDSALA
-		{
-			get
-			{
-				return this._IDSALA;
-			}
-			set
-			{
-				if ((this._IDSALA != value))
-				{
-					this.OnIDSALAChanging(value);
-					this.SendPropertyChanging();
-					this._IDSALA = value;
-					this.SendPropertyChanged("IDSALA");
-					this.OnIDSALAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCINE", DbType="Int")]
-		public System.Nullable<int> IDCINE
-		{
-			get
-			{
-				return this._IDCINE;
-			}
-			set
-			{
-				if ((this._IDCINE != value))
-				{
-					if (this._CINE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDCINEChanging(value);
-					this.SendPropertyChanging();
-					this._IDCINE = value;
-					this.SendPropertyChanged("IDCINE");
-					this.OnIDCINEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMBUTACAS", DbType="Int")]
-		public System.Nullable<int> NUMBUTACAS
-		{
-			get
-			{
-				return this._NUMBUTACAS;
-			}
-			set
-			{
-				if ((this._NUMBUTACAS != value))
-				{
-					this.OnNUMBUTACASChanging(value);
-					this.SendPropertyChanging();
-					this._NUMBUTACAS = value;
-					this.SendPropertyChanged("NUMBUTACAS");
-					this.OnNUMBUTACASChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMEROFILAS", DbType="Int")]
-		public System.Nullable<int> NUMEROFILAS
-		{
-			get
-			{
-				return this._NUMEROFILAS;
-			}
-			set
-			{
-				if ((this._NUMEROFILAS != value))
-				{
-					this.OnNUMEROFILASChanging(value);
-					this.SendPropertyChanging();
-					this._NUMEROFILAS = value;
-					this.SendPropertyChanged("NUMEROFILAS");
-					this.OnNUMEROFILASChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMEROCOLUMNAS", DbType="Int")]
-		public System.Nullable<int> NUMEROCOLUMNAS
-		{
-			get
-			{
-				return this._NUMEROCOLUMNAS;
-			}
-			set
-			{
-				if ((this._NUMEROCOLUMNAS != value))
-				{
-					this.OnNUMEROCOLUMNASChanging(value);
-					this.SendPropertyChanging();
-					this._NUMEROCOLUMNAS = value;
-					this.SendPropertyChanged("NUMEROCOLUMNAS");
-					this.OnNUMEROCOLUMNASChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BHABILITADO", DbType="Bit")]
-		public System.Nullable<bool> BHABILITADO
-		{
-			get
-			{
-				return this._BHABILITADO;
-			}
-			set
-			{
-				if ((this._BHABILITADO != value))
-				{
-					this.OnBHABILITADOChanging(value);
-					this.SendPropertyChanging();
-					this._BHABILITADO = value;
-					this.SendPropertyChanged("BHABILITADO");
-					this.OnBHABILITADOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SALA_FUNCION", Storage="_FUNCION", ThisKey="IDSALA", OtherKey="IDSALA")]
-		public EntitySet<FUNCION> FUNCION
-		{
-			get
-			{
-				return this._FUNCION;
-			}
-			set
-			{
-				this._FUNCION.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CINE_SALA", Storage="_CINE", ThisKey="IDCINE", OtherKey="IDCINE", IsForeignKey=true)]
-		public CINE CINE
-		{
-			get
-			{
-				return this._CINE.Entity;
-			}
-			set
-			{
-				CINE previousValue = this._CINE.Entity;
-				if (((previousValue != value) 
-							|| (this._CINE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CINE.Entity = null;
-						previousValue.SALA.Remove(this);
-					}
-					this._CINE.Entity = value;
-					if ((value != null))
-					{
-						value.SALA.Add(this);
-						this._IDCINE = value.IDCINE;
-					}
-					else
-					{
-						this._IDCINE = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CINE");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_FUNCION(FUNCION entity)
-		{
-			this.SendPropertyChanging();
-			entity.SALA = this;
-		}
-		
-		private void detach_FUNCION(FUNCION entity)
-		{
-			this.SendPropertyChanging();
-			entity.SALA = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SEXO")]
 	public partial class SEXO : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4608,6 +4357,281 @@ namespace ProyectoFinalUdemyLinq
 		{
 			this.SendPropertyChanging();
 			entity.TIPOMODALIDAD = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SALA")]
+	public partial class SALA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDSALA;
+		
+		private System.Nullable<int> _IDCINE;
+		
+		private System.Nullable<int> _NUMBUTACAS;
+		
+		private System.Nullable<int> _NUMEROFILAS;
+		
+		private System.Nullable<int> _NUMEROCOLUMNAS;
+		
+		private System.Nullable<bool> _BHABILITADO;
+		
+		private string _NOMBRE;
+		
+		private EntitySet<FUNCION> _FUNCION;
+		
+		private EntityRef<CINE> _CINE;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDSALAChanging(int value);
+    partial void OnIDSALAChanged();
+    partial void OnIDCINEChanging(System.Nullable<int> value);
+    partial void OnIDCINEChanged();
+    partial void OnNUMBUTACASChanging(System.Nullable<int> value);
+    partial void OnNUMBUTACASChanged();
+    partial void OnNUMEROFILASChanging(System.Nullable<int> value);
+    partial void OnNUMEROFILASChanged();
+    partial void OnNUMEROCOLUMNASChanging(System.Nullable<int> value);
+    partial void OnNUMEROCOLUMNASChanged();
+    partial void OnBHABILITADOChanging(System.Nullable<bool> value);
+    partial void OnBHABILITADOChanged();
+    partial void OnNOMBREChanging(string value);
+    partial void OnNOMBREChanged();
+    #endregion
+		
+		public SALA()
+		{
+			this._FUNCION = new EntitySet<FUNCION>(new Action<FUNCION>(this.attach_FUNCION), new Action<FUNCION>(this.detach_FUNCION));
+			this._CINE = default(EntityRef<CINE>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDSALA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IDSALA
+		{
+			get
+			{
+				return this._IDSALA;
+			}
+			set
+			{
+				if ((this._IDSALA != value))
+				{
+					this.OnIDSALAChanging(value);
+					this.SendPropertyChanging();
+					this._IDSALA = value;
+					this.SendPropertyChanged("IDSALA");
+					this.OnIDSALAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCINE", DbType="Int")]
+		public System.Nullable<int> IDCINE
+		{
+			get
+			{
+				return this._IDCINE;
+			}
+			set
+			{
+				if ((this._IDCINE != value))
+				{
+					if (this._CINE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCINEChanging(value);
+					this.SendPropertyChanging();
+					this._IDCINE = value;
+					this.SendPropertyChanged("IDCINE");
+					this.OnIDCINEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMBUTACAS", DbType="Int")]
+		public System.Nullable<int> NUMBUTACAS
+		{
+			get
+			{
+				return this._NUMBUTACAS;
+			}
+			set
+			{
+				if ((this._NUMBUTACAS != value))
+				{
+					this.OnNUMBUTACASChanging(value);
+					this.SendPropertyChanging();
+					this._NUMBUTACAS = value;
+					this.SendPropertyChanged("NUMBUTACAS");
+					this.OnNUMBUTACASChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMEROFILAS", DbType="Int")]
+		public System.Nullable<int> NUMEROFILAS
+		{
+			get
+			{
+				return this._NUMEROFILAS;
+			}
+			set
+			{
+				if ((this._NUMEROFILAS != value))
+				{
+					this.OnNUMEROFILASChanging(value);
+					this.SendPropertyChanging();
+					this._NUMEROFILAS = value;
+					this.SendPropertyChanged("NUMEROFILAS");
+					this.OnNUMEROFILASChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMEROCOLUMNAS", DbType="Int")]
+		public System.Nullable<int> NUMEROCOLUMNAS
+		{
+			get
+			{
+				return this._NUMEROCOLUMNAS;
+			}
+			set
+			{
+				if ((this._NUMEROCOLUMNAS != value))
+				{
+					this.OnNUMEROCOLUMNASChanging(value);
+					this.SendPropertyChanging();
+					this._NUMEROCOLUMNAS = value;
+					this.SendPropertyChanged("NUMEROCOLUMNAS");
+					this.OnNUMEROCOLUMNASChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BHABILITADO", DbType="Bit")]
+		public System.Nullable<bool> BHABILITADO
+		{
+			get
+			{
+				return this._BHABILITADO;
+			}
+			set
+			{
+				if ((this._BHABILITADO != value))
+				{
+					this.OnBHABILITADOChanging(value);
+					this.SendPropertyChanging();
+					this._BHABILITADO = value;
+					this.SendPropertyChanged("BHABILITADO");
+					this.OnBHABILITADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE", DbType="VarChar(50)")]
+		public string NOMBRE
+		{
+			get
+			{
+				return this._NOMBRE;
+			}
+			set
+			{
+				if ((this._NOMBRE != value))
+				{
+					this.OnNOMBREChanging(value);
+					this.SendPropertyChanging();
+					this._NOMBRE = value;
+					this.SendPropertyChanged("NOMBRE");
+					this.OnNOMBREChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SALA_FUNCION", Storage="_FUNCION", ThisKey="IDSALA", OtherKey="IDSALA")]
+		public EntitySet<FUNCION> FUNCION
+		{
+			get
+			{
+				return this._FUNCION;
+			}
+			set
+			{
+				this._FUNCION.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CINE_SALA", Storage="_CINE", ThisKey="IDCINE", OtherKey="IDCINE", IsForeignKey=true)]
+		public CINE CINE
+		{
+			get
+			{
+				return this._CINE.Entity;
+			}
+			set
+			{
+				CINE previousValue = this._CINE.Entity;
+				if (((previousValue != value) 
+							|| (this._CINE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CINE.Entity = null;
+						previousValue.SALA.Remove(this);
+					}
+					this._CINE.Entity = value;
+					if ((value != null))
+					{
+						value.SALA.Add(this);
+						this._IDCINE = value.IDCINE;
+					}
+					else
+					{
+						this._IDCINE = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CINE");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_FUNCION(FUNCION entity)
+		{
+			this.SendPropertyChanging();
+			entity.SALA = this;
+		}
+		
+		private void detach_FUNCION(FUNCION entity)
+		{
+			this.SendPropertyChanging();
+			entity.SALA = null;
 		}
 	}
 }

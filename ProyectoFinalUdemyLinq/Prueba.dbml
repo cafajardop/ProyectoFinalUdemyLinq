@@ -144,18 +144,6 @@
       <Association Name="EMPLEADO_RESERVA" Member="EMPLEADO" ThisKey="IDEMPLEADO" OtherKey="IDEMPLEADO" Type="EMPLEADO" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SALA" Member="SALA">
-    <Type Name="SALA">
-      <Column Name="IDSALA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IDCINE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NUMBUTACAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NUMEROFILAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NUMEROCOLUMNAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BHABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="SALA_FUNCION" Member="FUNCION" ThisKey="IDSALA" OtherKey="IDSALA" Type="FUNCION" />
-      <Association Name="CINE_SALA" Member="CINE" ThisKey="IDCINE" OtherKey="IDCINE" Type="CINE" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SEXO" Member="SEXO">
     <Type Name="SEXO">
       <Column Name="IDSEXO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -204,6 +192,19 @@
       <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BHABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="TIPOMODALIDAD_EMPLEADO" Member="EMPLEADO" ThisKey="IDTIPOMODALIDAD" OtherKey="IDTIPOMODALIDAD" Type="EMPLEADO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SALA" Member="SALA">
+    <Type Name="SALA">
+      <Column Name="IDSALA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDCINE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NUMBUTACAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NUMEROFILAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NUMEROCOLUMNAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BHABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="SALA_FUNCION" Member="FUNCION" ThisKey="IDSALA" OtherKey="IDSALA" Type="FUNCION" />
+      <Association Name="CINE_SALA" Member="CINE" ThisKey="IDCINE" OtherKey="IDCINE" Type="CINE" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
