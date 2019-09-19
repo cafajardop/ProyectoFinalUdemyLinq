@@ -41,6 +41,17 @@ namespace ProyectoFinalUdemyLinq
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             int idcine = int.Parse(cmbNombre.SelectedValue.ToString());
+            string nombre = txtNombre.Text;
+            if (nombre.Equals(""))
+            {
+                errorDatos.SetError(txtNombre, "Nombre Obligario");
+                this.DialogResult = DialogResult.OK;
+                return;
+            }
+            else
+            {
+                errorDatos.SetError(txtNombre, "");
+            }
             int numeroButacas = int.Parse(txtNumeroSillas.Value.ToString());
             if (numeroButacas <= 0)
             {
