@@ -41,7 +41,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.errorDatos = new System.Windows.Forms.ErrorProvider(this.components);
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtNombreSala = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroSillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroFilas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeroColumnas)).BeginInit();
@@ -51,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 64);
+            this.label1.Location = new System.Drawing.Point(53, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 0;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(84, 144);
+            this.label2.Location = new System.Drawing.Point(53, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 1;
@@ -69,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(84, 199);
+            this.label3.Location = new System.Drawing.Point(53, 197);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 2;
@@ -78,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(84, 260);
+            this.label4.Location = new System.Drawing.Point(53, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 13);
             this.label4.TabIndex = 3;
@@ -87,28 +87,28 @@
             // cmbNombre
             // 
             this.cmbNombre.FormattingEnabled = true;
-            this.cmbNombre.Location = new System.Drawing.Point(244, 61);
+            this.cmbNombre.Location = new System.Drawing.Point(213, 65);
             this.cmbNombre.Name = "cmbNombre";
             this.cmbNombre.Size = new System.Drawing.Size(121, 21);
             this.cmbNombre.TabIndex = 4;
             // 
             // txtNumeroSillas
             // 
-            this.txtNumeroSillas.Location = new System.Drawing.Point(244, 144);
+            this.txtNumeroSillas.Location = new System.Drawing.Point(213, 150);
             this.txtNumeroSillas.Name = "txtNumeroSillas";
             this.txtNumeroSillas.Size = new System.Drawing.Size(120, 20);
             this.txtNumeroSillas.TabIndex = 5;
             // 
             // txtNumeroFilas
             // 
-            this.txtNumeroFilas.Location = new System.Drawing.Point(244, 192);
+            this.txtNumeroFilas.Location = new System.Drawing.Point(213, 190);
             this.txtNumeroFilas.Name = "txtNumeroFilas";
             this.txtNumeroFilas.Size = new System.Drawing.Size(120, 20);
             this.txtNumeroFilas.TabIndex = 6;
             // 
             // txtNumeroColumnas
             // 
-            this.txtNumeroColumnas.Location = new System.Drawing.Point(244, 253);
+            this.txtNumeroColumnas.Location = new System.Drawing.Point(213, 234);
             this.txtNumeroColumnas.Name = "txtNumeroColumnas";
             this.txtNumeroColumnas.Size = new System.Drawing.Size(120, 20);
             this.txtNumeroColumnas.TabIndex = 7;
@@ -116,9 +116,9 @@
             // btnAceptar
             // 
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAceptar.Location = new System.Drawing.Point(87, 326);
+            this.btnAceptar.Location = new System.Drawing.Point(64, 297);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(75, 24);
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -127,9 +127,9 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(277, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(267, 297);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 24);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -141,25 +141,25 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(84, 107);
+            this.label5.Location = new System.Drawing.Point(53, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Nombre Sala";
             // 
-            // txtNombre
+            // txtNombreSala
             // 
-            this.txtNombre.Location = new System.Drawing.Point(244, 99);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(121, 20);
-            this.txtNombre.TabIndex = 11;
+            this.txtNombreSala.Location = new System.Drawing.Point(213, 103);
+            this.txtNombreSala.Name = "txtNombreSala";
+            this.txtNombreSala.Size = new System.Drawing.Size(121, 20);
+            this.txtNombreSala.TabIndex = 11;
             // 
             // FrmPopupSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 471);
-            this.Controls.Add(this.txtNombre);
+            this.ClientSize = new System.Drawing.Size(398, 354);
+            this.Controls.Add(this.txtNombreSala);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -197,7 +197,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider errorDatos;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtNombreSala;
         private System.Windows.Forms.Label label5;
     }
 }

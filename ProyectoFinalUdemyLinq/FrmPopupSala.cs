@@ -31,6 +31,7 @@ namespace ProyectoFinalUdemyLinq
                 foreach (SALA osala in consulta)
                 {
                     cmbNombre.SelectedValue = osala.IDCINE;
+                    txtNombreSala.Text = osala.NOMBRE.ToString();
                     txtNumeroSillas.Value = decimal.Parse(osala.NUMBUTACAS.ToString());
                     txtNumeroFilas.Value = decimal.Parse(osala.NUMEROFILAS.ToString());
                     txtNumeroColumnas.Value = decimal.Parse(osala.NUMEROCOLUMNAS.ToString());
@@ -41,16 +42,16 @@ namespace ProyectoFinalUdemyLinq
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             int idcine = int.Parse(cmbNombre.SelectedValue.ToString());
-            string nombre = txtNombre.Text;
+            string nombre = txtNombreSala.Text;
             if (nombre.Equals(""))
             {
-                errorDatos.SetError(txtNombre, "Nombre Obligario");
+                errorDatos.SetError(txtNombreSala, "Nombre Obligario");
                 this.DialogResult = DialogResult.OK;
                 return;
             }
             else
             {
-                errorDatos.SetError(txtNombre, "");
+                errorDatos.SetError(txtNombreSala, "");
             }
             int numeroButacas = int.Parse(txtNumeroSillas.Value.ToString());
             if (numeroButacas <= 0)
@@ -90,6 +91,7 @@ namespace ProyectoFinalUdemyLinq
                 SALA osala = new SALA()
                 {
                     IDCINE = idcine,
+                    NOMBRE = nombre,
                     NUMBUTACAS = numeroButacas,
                     NUMEROFILAS = numeroFilas,
                     NUMEROCOLUMNAS = numeroColumnas,
@@ -112,6 +114,7 @@ namespace ProyectoFinalUdemyLinq
                 foreach (SALA osala in consulta)
                 {
                     osala.IDCINE = idcine;
+                    osala.NOMBRE = nombre;
                     osala.NUMBUTACAS = numeroButacas;
                     osala.NUMEROFILAS = numeroFilas;
                     osala.NUMEROCOLUMNAS = numeroColumnas;

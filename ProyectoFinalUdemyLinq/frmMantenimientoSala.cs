@@ -49,7 +49,7 @@ namespace ProyectoFinalUdemyLinq
                                   select new
                                   {
                                       sala.IDSALA,
-                                      cine.NOMBRE,
+                                      sala.NOMBRE,
                                       sala.NUMBUTACAS,
                                       sala.NUMEROCOLUMNAS,
                                       sala.NUMEROFILAS
@@ -74,7 +74,7 @@ namespace ProyectoFinalUdemyLinq
                                   select new
                                   {
                                       sala.IDSALA,
-                                      cine.NOMBRE,
+                                      sala.NOMBRE,
                                       sala.NUMBUTACAS,
                                       sala.NUMEROCOLUMNAS,
                                       sala.NUMEROFILAS
