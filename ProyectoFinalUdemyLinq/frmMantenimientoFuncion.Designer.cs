@@ -65,6 +65,7 @@
             this.cmbPeliculaFun.Name = "cmbPeliculaFun";
             this.cmbPeliculaFun.Size = new System.Drawing.Size(138, 21);
             this.cmbPeliculaFun.TabIndex = 2;
+            this.cmbPeliculaFun.SelectionChangeCommitted += new System.EventHandler(this.filtrar);
             // 
             // toolStrip1
             // 
@@ -83,20 +84,21 @@
             this.toolStripNuevo.Name = "toolStripNuevo";
             this.toolStripNuevo.Size = new System.Drawing.Size(42, 22);
             this.toolStripNuevo.Text = "Nuevo";
-            this.toolStripNuevo.Click += new System.EventHandler(this.ToolStripNuevo_Click);
+            this.toolStripNuevo.Click += new System.EventHandler(this.toolStripNuevo_Click);
             // 
             // toolStripEditar
             // 
             this.toolStripEditar.Name = "toolStripEditar";
             this.toolStripEditar.Size = new System.Drawing.Size(37, 22);
             this.toolStripEditar.Text = "Editar";
-            this.toolStripEditar.Click += new System.EventHandler(this.ToolStripEditar_Click);
+            this.toolStripEditar.Click += new System.EventHandler(this.toolStripEditar_Click);
             // 
             // toolStripEliminar
             // 
             this.toolStripEliminar.Name = "toolStripEliminar";
             this.toolStripEliminar.Size = new System.Drawing.Size(50, 22);
             this.toolStripEliminar.Text = "Eliminar";
+            this.toolStripEliminar.Click += new System.EventHandler(this.toolStripEliminar_Click);
             // 
             // frmMantenimientoFuncion
             // 
@@ -110,6 +112,7 @@
             this.Name = "frmMantenimientoFuncion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Funcion";
+            this.Load += new System.EventHandler(this.frmMantenimientoFuncion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculaFun)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
