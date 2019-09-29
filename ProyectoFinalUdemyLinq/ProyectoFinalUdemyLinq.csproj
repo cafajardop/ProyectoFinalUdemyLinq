@@ -64,6 +64,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ENTRADA.cs" />
+    <Compile Include="frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEmpleado.Designer.cs">
+      <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMantenimientoCine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +167,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Prueba.dbml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarEmpleado.resx">
+      <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoCine.resx">
       <DependentUpon>frmMantenimientoCine.cs</DependentUpon>
     </EmbeddedResource>

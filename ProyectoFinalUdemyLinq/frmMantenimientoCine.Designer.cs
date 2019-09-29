@@ -47,7 +47,7 @@
             this.toolStripCancelar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(687, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(370, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -75,17 +75,17 @@
             // dgvCine
             // 
             this.dgvCine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCine.Location = new System.Drawing.Point(12, 78);
+            this.dgvCine.Location = new System.Drawing.Point(12, 62);
             this.dgvCine.Name = "dgvCine";
             this.dgvCine.ReadOnly = true;
             this.dgvCine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCine.Size = new System.Drawing.Size(658, 335);
+            this.dgvCine.Size = new System.Drawing.Size(346, 230);
             this.dgvCine.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 41);
+            this.label1.Location = new System.Drawing.Point(80, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             // txtNombreCine
             // 
-            this.txtNombreCine.Location = new System.Drawing.Point(313, 38);
+            this.txtNombreCine.Location = new System.Drawing.Point(178, 36);
             this.txtNombreCine.Name = "txtNombreCine";
             this.txtNombreCine.Size = new System.Drawing.Size(100, 20);
             this.txtNombreCine.TabIndex = 3;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 435);
+            this.ClientSize = new System.Drawing.Size(370, 304);
             this.Controls.Add(this.txtNombreCine);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvCine);

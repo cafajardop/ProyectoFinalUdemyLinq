@@ -53,5 +53,11 @@ namespace ProyectoFinalUdemyLinq
             frmMantenimientoFuncion ofrmMantenimientoFuncion = new frmMantenimientoFuncion();
             ofrmMantenimientoFuncion.ShowDialog();
         }
+
+        private void reservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcesoReserva ofrmProcesoReserva = new frmProcesoReserva();
+            ofrmProcesoReserva.ShowDialog();
+        }
     }
 }
