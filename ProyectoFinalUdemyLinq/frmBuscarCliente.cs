@@ -26,6 +26,7 @@ namespace ProyectoFinalUdemyLinq
                 Select(
                 x => new
                 {
+                    x.IDCLIENTE,
                     x.DNICLIENTE,
                     x.NOMBRE,
                     x.APPATERNO,
@@ -42,6 +43,7 @@ namespace ProyectoFinalUdemyLinq
                 Select(
                 x => new
                 {
+                    x.IDCLIENTE,
                     x.DNICLIENTE,
                     x.NOMBRE,
                     x.APPATERNO,
@@ -58,6 +60,7 @@ namespace ProyectoFinalUdemyLinq
                 Select(
                 x => new
                 {
+                    x.IDCLIENTE,
                     x.DNICLIENTE,
                     x.NOMBRE,
                     x.APPATERNO,
@@ -69,9 +72,9 @@ namespace ProyectoFinalUdemyLinq
         private void MostrarDatos(object sender, EventArgs e)
         {
             id = dgvCliente.CurrentRow.Cells[0].Value.ToString();
-            nombreCompleto = dgvCliente.CurrentRow.Cells[1].Value.ToString() +
-            " " + dgvCliente.CurrentRow.Cells[2].Value.ToString() +
-            " " + dgvCliente.CurrentRow.Cells[3].Value.ToString();
+            nombreCompleto = dgvCliente.CurrentRow.Cells[2].Value.ToString() +
+            " " + dgvCliente.CurrentRow.Cells[3].Value.ToString() +
+            " " + dgvCliente.CurrentRow.Cells[4].Value.ToString();
             this.DialogResult = DialogResult.OK;
 
         }

@@ -160,6 +160,8 @@
     <Compile Include="frmProcesoReserva.Designer.cs">
       <DependentUpon>frmProcesoReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcion.cs" />
+    <Compile Include="Pelicula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prueba.designer.cs">
@@ -167,6 +169,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Prueba.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Reserva.cs" />
+    <Compile Include="TipoEntrada.cs" />
     <EmbeddedResource Include="frmBuscarCliente.resx">
       <DependentUpon>frmBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
