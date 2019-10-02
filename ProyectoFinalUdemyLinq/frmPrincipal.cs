@@ -59,5 +59,22 @@ namespace ProyectoFinalUdemyLinq
             frmProcesoReserva ofrmProcesoReserva = new frmProcesoReserva();
             ofrmProcesoReserva.ShowDialog();
         }
+
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void reservasPorEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaEmpleadoscs ofrmConsultaEmpleadoscs = new frmConsultaEmpleadoscs();
+            ofrmConsultaEmpleadoscs.ShowDialog();
+        }
+
+        private void reservasPorClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReservaCliente ofrmReservaCliente = new frmReservaCliente();
+            ofrmReservaCliente.ShowDialog();
+        }
     }
 }

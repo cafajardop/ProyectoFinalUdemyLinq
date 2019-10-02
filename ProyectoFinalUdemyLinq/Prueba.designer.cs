@@ -39,9 +39,6 @@ namespace ProyectoFinalUdemyLinq
     partial void InsertCLIENTE(CLIENTE instance);
     partial void UpdateCLIENTE(CLIENTE instance);
     partial void DeleteCLIENTE(CLIENTE instance);
-    partial void InsertDETALLERESERVA(DETALLERESERVA instance);
-    partial void UpdateDETALLERESERVA(DETALLERESERVA instance);
-    partial void DeleteDETALLERESERVA(DETALLERESERVA instance);
     partial void InsertEMPLEADO(EMPLEADO instance);
     partial void UpdateEMPLEADO(EMPLEADO instance);
     partial void DeleteEMPLEADO(EMPLEADO instance);
@@ -54,9 +51,6 @@ namespace ProyectoFinalUdemyLinq
     partial void InsertPELICULA(PELICULA instance);
     partial void UpdatePELICULA(PELICULA instance);
     partial void DeletePELICULA(PELICULA instance);
-    partial void InsertRESERVA(RESERVA instance);
-    partial void UpdateRESERVA(RESERVA instance);
-    partial void DeleteRESERVA(RESERVA instance);
     partial void InsertSEXO(SEXO instance);
     partial void UpdateSEXO(SEXO instance);
     partial void DeleteSEXO(SEXO instance);
@@ -84,6 +78,12 @@ namespace ProyectoFinalUdemyLinq
     partial void InsertFUNCIONENTRADA(FUNCIONENTRADA instance);
     partial void UpdateFUNCIONENTRADA(FUNCIONENTRADA instance);
     partial void DeleteFUNCIONENTRADA(FUNCIONENTRADA instance);
+    partial void InsertRESERVA(RESERVA instance);
+    partial void UpdateRESERVA(RESERVA instance);
+    partial void DeleteRESERVA(RESERVA instance);
+    partial void InsertDETALLERESERVA(DETALLERESERVA instance);
+    partial void UpdateDETALLERESERVA(DETALLERESERVA instance);
+    partial void DeleteDETALLERESERVA(DETALLERESERVA instance);
     #endregion
 		
 		public PruebaDataContext() : 
@@ -140,14 +140,6 @@ namespace ProyectoFinalUdemyLinq
 			}
 		}
 		
-		public System.Data.Linq.Table<DETALLERESERVA> DETALLERESERVA
-		{
-			get
-			{
-				return this.GetTable<DETALLERESERVA>();
-			}
-		}
-		
 		public System.Data.Linq.Table<EMPLEADO> EMPLEADO
 		{
 			get
@@ -177,14 +169,6 @@ namespace ProyectoFinalUdemyLinq
 			get
 			{
 				return this.GetTable<PELICULA>();
-			}
-		}
-		
-		public System.Data.Linq.Table<RESERVA> RESERVA
-		{
-			get
-			{
-				return this.GetTable<RESERVA>();
 			}
 		}
 		
@@ -257,6 +241,22 @@ namespace ProyectoFinalUdemyLinq
 			get
 			{
 				return this.GetTable<FUNCIONENTRADA>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RESERVA> RESERVA
+		{
+			get
+			{
+				return this.GetTable<RESERVA>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DETALLERESERVA> DETALLERESERVA
+		{
+			get
+			{
+				return this.GetTable<DETALLERESERVA>();
 			}
 		}
 	}
@@ -865,9 +865,9 @@ namespace ProyectoFinalUdemyLinq
 		
 		private System.Nullable<bool> _BHABILITADO;
 		
-		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
-		
 		private EntitySet<RESERVA> _RESERVA;
+		
+		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
 		
 		private EntityRef<SEXO> _SEXO;
 		
@@ -903,8 +903,8 @@ namespace ProyectoFinalUdemyLinq
 		
 		public CLIENTE()
 		{
-			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
 			this._RESERVA = new EntitySet<RESERVA>(new Action<RESERVA>(this.attach_RESERVA), new Action<RESERVA>(this.detach_RESERVA));
+			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
 			this._SEXO = default(EntityRef<SEXO>);
 			this._SEXO1 = default(EntityRef<SEXO>);
 			OnCreated();
@@ -1134,19 +1134,6 @@ namespace ProyectoFinalUdemyLinq
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE")]
-		public EntitySet<DETALLERESERVA> DETALLERESERVA
-		{
-			get
-			{
-				return this._DETALLERESERVA;
-			}
-			set
-			{
-				this._DETALLERESERVA.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_RESERVA", Storage="_RESERVA", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE")]
 		public EntitySet<RESERVA> RESERVA
 		{
@@ -1157,6 +1144,19 @@ namespace ProyectoFinalUdemyLinq
 			set
 			{
 				this._RESERVA.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE")]
+		public EntitySet<DETALLERESERVA> DETALLERESERVA
+		{
+			get
+			{
+				return this._DETALLERESERVA;
+			}
+			set
+			{
+				this._DETALLERESERVA.Assign(value);
 			}
 		}
 		
@@ -1248,18 +1248,6 @@ namespace ProyectoFinalUdemyLinq
 			}
 		}
 		
-		private void attach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.CLIENTE = this;
-		}
-		
-		private void detach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.CLIENTE = null;
-		}
-		
 		private void attach_RESERVA(RESERVA entity)
 		{
 			this.SendPropertyChanging();
@@ -1271,262 +1259,17 @@ namespace ProyectoFinalUdemyLinq
 			this.SendPropertyChanging();
 			entity.CLIENTE = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DETALLERESERVA")]
-	public partial class DETALLERESERVA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDRESERVA;
-		
-		private int _IDCLIENTE;
-		
-		private System.Nullable<int> _PRECIO;
-		
-		private System.Nullable<int> _IDFUNCION;
-		
-		private EntityRef<CLIENTE> _CLIENTE;
-		
-		private EntityRef<RESERVA> _RESERVA;
-		
-		private EntityRef<FUNCION> _FUNCION;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDRESERVAChanging(int value);
-    partial void OnIDRESERVAChanged();
-    partial void OnIDCLIENTEChanging(int value);
-    partial void OnIDCLIENTEChanged();
-    partial void OnPRECIOChanging(System.Nullable<int> value);
-    partial void OnPRECIOChanged();
-    partial void OnIDFUNCIONChanging(System.Nullable<int> value);
-    partial void OnIDFUNCIONChanged();
-    #endregion
-		
-		public DETALLERESERVA()
+		private void attach_DETALLERESERVA(DETALLERESERVA entity)
 		{
-			this._CLIENTE = default(EntityRef<CLIENTE>);
-			this._RESERVA = default(EntityRef<RESERVA>);
-			this._FUNCION = default(EntityRef<FUNCION>);
-			OnCreated();
+			this.SendPropertyChanging();
+			entity.CLIENTE = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDRESERVA
+		private void detach_DETALLERESERVA(DETALLERESERVA entity)
 		{
-			get
-			{
-				return this._IDRESERVA;
-			}
-			set
-			{
-				if ((this._IDRESERVA != value))
-				{
-					if (this._RESERVA.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDRESERVAChanging(value);
-					this.SendPropertyChanging();
-					this._IDRESERVA = value;
-					this.SendPropertyChanged("IDRESERVA");
-					this.OnIDRESERVAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDCLIENTE
-		{
-			get
-			{
-				return this._IDCLIENTE;
-			}
-			set
-			{
-				if ((this._IDCLIENTE != value))
-				{
-					if (this._CLIENTE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDCLIENTEChanging(value);
-					this.SendPropertyChanging();
-					this._IDCLIENTE = value;
-					this.SendPropertyChanged("IDCLIENTE");
-					this.OnIDCLIENTEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRECIO", DbType="Int")]
-		public System.Nullable<int> PRECIO
-		{
-			get
-			{
-				return this._PRECIO;
-			}
-			set
-			{
-				if ((this._PRECIO != value))
-				{
-					this.OnPRECIOChanging(value);
-					this.SendPropertyChanging();
-					this._PRECIO = value;
-					this.SendPropertyChanged("PRECIO");
-					this.OnPRECIOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int")]
-		public System.Nullable<int> IDFUNCION
-		{
-			get
-			{
-				return this._IDFUNCION;
-			}
-			set
-			{
-				if ((this._IDFUNCION != value))
-				{
-					if (this._FUNCION.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDFUNCIONChanging(value);
-					this.SendPropertyChanging();
-					this._IDFUNCION = value;
-					this.SendPropertyChanged("IDFUNCION");
-					this.OnIDFUNCIONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_DETALLERESERVA", Storage="_CLIENTE", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE", IsForeignKey=true)]
-		public CLIENTE CLIENTE
-		{
-			get
-			{
-				return this._CLIENTE.Entity;
-			}
-			set
-			{
-				CLIENTE previousValue = this._CLIENTE.Entity;
-				if (((previousValue != value) 
-							|| (this._CLIENTE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CLIENTE.Entity = null;
-						previousValue.DETALLERESERVA.Remove(this);
-					}
-					this._CLIENTE.Entity = value;
-					if ((value != null))
-					{
-						value.DETALLERESERVA.Add(this);
-						this._IDCLIENTE = value.IDCLIENTE;
-					}
-					else
-					{
-						this._IDCLIENTE = default(int);
-					}
-					this.SendPropertyChanged("CLIENTE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="RESERVA_DETALLERESERVA", Storage="_RESERVA", ThisKey="IDRESERVA", OtherKey="IDRESERVA", IsForeignKey=true)]
-		public RESERVA RESERVA
-		{
-			get
-			{
-				return this._RESERVA.Entity;
-			}
-			set
-			{
-				RESERVA previousValue = this._RESERVA.Entity;
-				if (((previousValue != value) 
-							|| (this._RESERVA.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._RESERVA.Entity = null;
-						previousValue.DETALLERESERVA.Remove(this);
-					}
-					this._RESERVA.Entity = value;
-					if ((value != null))
-					{
-						value.DETALLERESERVA.Add(this);
-						this._IDRESERVA = value.IDRESERVA;
-					}
-					else
-					{
-						this._IDRESERVA = default(int);
-					}
-					this.SendPropertyChanged("RESERVA");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FUNCION_DETALLERESERVA", Storage="_FUNCION", ThisKey="IDFUNCION", OtherKey="IDFUNCION", IsForeignKey=true)]
-		public FUNCION FUNCION
-		{
-			get
-			{
-				return this._FUNCION.Entity;
-			}
-			set
-			{
-				FUNCION previousValue = this._FUNCION.Entity;
-				if (((previousValue != value) 
-							|| (this._FUNCION.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._FUNCION.Entity = null;
-						previousValue.DETALLERESERVA.Remove(this);
-					}
-					this._FUNCION.Entity = value;
-					if ((value != null))
-					{
-						value.DETALLERESERVA.Add(this);
-						this._IDFUNCION = value.IDFUNCION;
-					}
-					else
-					{
-						this._IDFUNCION = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("FUNCION");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.CLIENTE = null;
 		}
 	}
 	
@@ -2644,250 +2387,6 @@ namespace ProyectoFinalUdemyLinq
 		{
 			this.SendPropertyChanging();
 			entity.PELICULA = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RESERVA")]
-	public partial class RESERVA : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDRESERVA;
-		
-		private System.Nullable<int> _IDCLIENTE;
-		
-		private System.Nullable<int> _IDEMPLEADO;
-		
-		private System.Nullable<decimal> _TOTAL;
-		
-		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
-		
-		private EntityRef<CLIENTE> _CLIENTE;
-		
-		private EntityRef<EMPLEADO> _EMPLEADO;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDRESERVAChanging(int value);
-    partial void OnIDRESERVAChanged();
-    partial void OnIDCLIENTEChanging(System.Nullable<int> value);
-    partial void OnIDCLIENTEChanged();
-    partial void OnIDEMPLEADOChanging(System.Nullable<int> value);
-    partial void OnIDEMPLEADOChanged();
-    partial void OnTOTALChanging(System.Nullable<decimal> value);
-    partial void OnTOTALChanged();
-    #endregion
-		
-		public RESERVA()
-		{
-			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
-			this._CLIENTE = default(EntityRef<CLIENTE>);
-			this._EMPLEADO = default(EntityRef<EMPLEADO>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDRESERVA
-		{
-			get
-			{
-				return this._IDRESERVA;
-			}
-			set
-			{
-				if ((this._IDRESERVA != value))
-				{
-					this.OnIDRESERVAChanging(value);
-					this.SendPropertyChanging();
-					this._IDRESERVA = value;
-					this.SendPropertyChanged("IDRESERVA");
-					this.OnIDRESERVAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int")]
-		public System.Nullable<int> IDCLIENTE
-		{
-			get
-			{
-				return this._IDCLIENTE;
-			}
-			set
-			{
-				if ((this._IDCLIENTE != value))
-				{
-					if (this._CLIENTE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDCLIENTEChanging(value);
-					this.SendPropertyChanging();
-					this._IDCLIENTE = value;
-					this.SendPropertyChanged("IDCLIENTE");
-					this.OnIDCLIENTEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDEMPLEADO", DbType="Int")]
-		public System.Nullable<int> IDEMPLEADO
-		{
-			get
-			{
-				return this._IDEMPLEADO;
-			}
-			set
-			{
-				if ((this._IDEMPLEADO != value))
-				{
-					if (this._EMPLEADO.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDEMPLEADOChanging(value);
-					this.SendPropertyChanging();
-					this._IDEMPLEADO = value;
-					this.SendPropertyChanged("IDEMPLEADO");
-					this.OnIDEMPLEADOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TOTAL
-		{
-			get
-			{
-				return this._TOTAL;
-			}
-			set
-			{
-				if ((this._TOTAL != value))
-				{
-					this.OnTOTALChanging(value);
-					this.SendPropertyChanging();
-					this._TOTAL = value;
-					this.SendPropertyChanged("TOTAL");
-					this.OnTOTALChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="RESERVA_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDRESERVA", OtherKey="IDRESERVA")]
-		public EntitySet<DETALLERESERVA> DETALLERESERVA
-		{
-			get
-			{
-				return this._DETALLERESERVA;
-			}
-			set
-			{
-				this._DETALLERESERVA.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_RESERVA", Storage="_CLIENTE", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE", IsForeignKey=true)]
-		public CLIENTE CLIENTE
-		{
-			get
-			{
-				return this._CLIENTE.Entity;
-			}
-			set
-			{
-				CLIENTE previousValue = this._CLIENTE.Entity;
-				if (((previousValue != value) 
-							|| (this._CLIENTE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CLIENTE.Entity = null;
-						previousValue.RESERVA.Remove(this);
-					}
-					this._CLIENTE.Entity = value;
-					if ((value != null))
-					{
-						value.RESERVA.Add(this);
-						this._IDCLIENTE = value.IDCLIENTE;
-					}
-					else
-					{
-						this._IDCLIENTE = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CLIENTE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EMPLEADO_RESERVA", Storage="_EMPLEADO", ThisKey="IDEMPLEADO", OtherKey="IDEMPLEADO", IsForeignKey=true)]
-		public EMPLEADO EMPLEADO
-		{
-			get
-			{
-				return this._EMPLEADO.Entity;
-			}
-			set
-			{
-				EMPLEADO previousValue = this._EMPLEADO.Entity;
-				if (((previousValue != value) 
-							|| (this._EMPLEADO.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EMPLEADO.Entity = null;
-						previousValue.RESERVA.Remove(this);
-					}
-					this._EMPLEADO.Entity = value;
-					if ((value != null))
-					{
-						value.RESERVA.Add(this);
-						this._IDEMPLEADO = value.IDEMPLEADO;
-					}
-					else
-					{
-						this._IDEMPLEADO = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("EMPLEADO");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.RESERVA = this;
-		}
-		
-		private void detach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.RESERVA = null;
 		}
 	}
 	
@@ -4072,9 +3571,9 @@ namespace ProyectoFinalUdemyLinq
 		
 		private EntitySet<BUTACA> _BUTACA1;
 		
-		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
-		
 		private EntitySet<FUNCIONENTRADA> _FUNCIONENTRADA;
+		
+		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
 		
 		private EntityRef<CINE> _CINE;
 		
@@ -4104,8 +3603,8 @@ namespace ProyectoFinalUdemyLinq
 		{
 			this._BUTACA = new EntitySet<BUTACA>(new Action<BUTACA>(this.attach_BUTACA), new Action<BUTACA>(this.detach_BUTACA));
 			this._BUTACA1 = new EntitySet<BUTACA>(new Action<BUTACA>(this.attach_BUTACA1), new Action<BUTACA>(this.detach_BUTACA1));
-			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
 			this._FUNCIONENTRADA = new EntitySet<FUNCIONENTRADA>(new Action<FUNCIONENTRADA>(this.attach_FUNCIONENTRADA), new Action<FUNCIONENTRADA>(this.detach_FUNCIONENTRADA));
+			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
 			this._CINE = default(EntityRef<CINE>);
 			this._PELICULA = default(EntityRef<PELICULA>);
 			this._SALA = default(EntityRef<SALA>);
@@ -4270,19 +3769,6 @@ namespace ProyectoFinalUdemyLinq
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FUNCION_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDFUNCION", OtherKey="IDFUNCION")]
-		public EntitySet<DETALLERESERVA> DETALLERESERVA
-		{
-			get
-			{
-				return this._DETALLERESERVA;
-			}
-			set
-			{
-				this._DETALLERESERVA.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FUNCION_FUNCIONENTRADA", Storage="_FUNCIONENTRADA", ThisKey="IDFUNCION", OtherKey="IDFUNCION")]
 		public EntitySet<FUNCIONENTRADA> FUNCIONENTRADA
 		{
@@ -4293,6 +3779,19 @@ namespace ProyectoFinalUdemyLinq
 			set
 			{
 				this._FUNCIONENTRADA.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FUNCION_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDFUNCION", OtherKey="IDFUNCION")]
+		public EntitySet<DETALLERESERVA> DETALLERESERVA
+		{
+			get
+			{
+				return this._DETALLERESERVA;
+			}
+			set
+			{
+				this._DETALLERESERVA.Assign(value);
 			}
 		}
 		
@@ -4442,18 +3941,6 @@ namespace ProyectoFinalUdemyLinq
 			entity.FUNCION1 = null;
 		}
 		
-		private void attach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.FUNCION = this;
-		}
-		
-		private void detach_DETALLERESERVA(DETALLERESERVA entity)
-		{
-			this.SendPropertyChanging();
-			entity.FUNCION = null;
-		}
-		
 		private void attach_FUNCIONENTRADA(FUNCIONENTRADA entity)
 		{
 			this.SendPropertyChanging();
@@ -4461,6 +3948,18 @@ namespace ProyectoFinalUdemyLinq
 		}
 		
 		private void detach_FUNCIONENTRADA(FUNCIONENTRADA entity)
+		{
+			this.SendPropertyChanging();
+			entity.FUNCION = null;
+		}
+		
+		private void attach_DETALLERESERVA(DETALLERESERVA entity)
+		{
+			this.SendPropertyChanging();
+			entity.FUNCION = this;
+		}
+		
+		private void detach_DETALLERESERVA(DETALLERESERVA entity)
 		{
 			this.SendPropertyChanging();
 			entity.FUNCION = null;
@@ -4658,6 +4157,579 @@ namespace ProyectoFinalUdemyLinq
 						this._IDTIPOENTRADA = default(int);
 					}
 					this.SendPropertyChanged("TIPOENTRADA");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RESERVA")]
+	public partial class RESERVA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDRESERVA;
+		
+		private System.Nullable<int> _IDCLIENTE;
+		
+		private System.Nullable<int> _IDEMPLEADO;
+		
+		private System.Nullable<decimal> _TOTAL;
+		
+		private System.Nullable<bool> _BHABILITADO;
+		
+		private EntitySet<DETALLERESERVA> _DETALLERESERVA;
+		
+		private EntityRef<CLIENTE> _CLIENTE;
+		
+		private EntityRef<EMPLEADO> _EMPLEADO;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDRESERVAChanging(int value);
+    partial void OnIDRESERVAChanged();
+    partial void OnIDCLIENTEChanging(System.Nullable<int> value);
+    partial void OnIDCLIENTEChanged();
+    partial void OnIDEMPLEADOChanging(System.Nullable<int> value);
+    partial void OnIDEMPLEADOChanged();
+    partial void OnTOTALChanging(System.Nullable<decimal> value);
+    partial void OnTOTALChanged();
+    partial void OnBHABILITADOChanging(System.Nullable<bool> value);
+    partial void OnBHABILITADOChanged();
+    #endregion
+		
+		public RESERVA()
+		{
+			this._DETALLERESERVA = new EntitySet<DETALLERESERVA>(new Action<DETALLERESERVA>(this.attach_DETALLERESERVA), new Action<DETALLERESERVA>(this.detach_DETALLERESERVA));
+			this._CLIENTE = default(EntityRef<CLIENTE>);
+			this._EMPLEADO = default(EntityRef<EMPLEADO>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDRESERVA
+		{
+			get
+			{
+				return this._IDRESERVA;
+			}
+			set
+			{
+				if ((this._IDRESERVA != value))
+				{
+					this.OnIDRESERVAChanging(value);
+					this.SendPropertyChanging();
+					this._IDRESERVA = value;
+					this.SendPropertyChanged("IDRESERVA");
+					this.OnIDRESERVAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int")]
+		public System.Nullable<int> IDCLIENTE
+		{
+			get
+			{
+				return this._IDCLIENTE;
+			}
+			set
+			{
+				if ((this._IDCLIENTE != value))
+				{
+					if (this._CLIENTE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCLIENTEChanging(value);
+					this.SendPropertyChanging();
+					this._IDCLIENTE = value;
+					this.SendPropertyChanged("IDCLIENTE");
+					this.OnIDCLIENTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDEMPLEADO", DbType="Int")]
+		public System.Nullable<int> IDEMPLEADO
+		{
+			get
+			{
+				return this._IDEMPLEADO;
+			}
+			set
+			{
+				if ((this._IDEMPLEADO != value))
+				{
+					if (this._EMPLEADO.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDEMPLEADOChanging(value);
+					this.SendPropertyChanging();
+					this._IDEMPLEADO = value;
+					this.SendPropertyChanged("IDEMPLEADO");
+					this.OnIDEMPLEADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TOTAL
+		{
+			get
+			{
+				return this._TOTAL;
+			}
+			set
+			{
+				if ((this._TOTAL != value))
+				{
+					this.OnTOTALChanging(value);
+					this.SendPropertyChanging();
+					this._TOTAL = value;
+					this.SendPropertyChanged("TOTAL");
+					this.OnTOTALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BHABILITADO", DbType="Bit")]
+		public System.Nullable<bool> BHABILITADO
+		{
+			get
+			{
+				return this._BHABILITADO;
+			}
+			set
+			{
+				if ((this._BHABILITADO != value))
+				{
+					this.OnBHABILITADOChanging(value);
+					this.SendPropertyChanging();
+					this._BHABILITADO = value;
+					this.SendPropertyChanged("BHABILITADO");
+					this.OnBHABILITADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="RESERVA_DETALLERESERVA", Storage="_DETALLERESERVA", ThisKey="IDRESERVA", OtherKey="IDRESERVA")]
+		public EntitySet<DETALLERESERVA> DETALLERESERVA
+		{
+			get
+			{
+				return this._DETALLERESERVA;
+			}
+			set
+			{
+				this._DETALLERESERVA.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_RESERVA", Storage="_CLIENTE", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE", IsForeignKey=true)]
+		public CLIENTE CLIENTE
+		{
+			get
+			{
+				return this._CLIENTE.Entity;
+			}
+			set
+			{
+				CLIENTE previousValue = this._CLIENTE.Entity;
+				if (((previousValue != value) 
+							|| (this._CLIENTE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CLIENTE.Entity = null;
+						previousValue.RESERVA.Remove(this);
+					}
+					this._CLIENTE.Entity = value;
+					if ((value != null))
+					{
+						value.RESERVA.Add(this);
+						this._IDCLIENTE = value.IDCLIENTE;
+					}
+					else
+					{
+						this._IDCLIENTE = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CLIENTE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EMPLEADO_RESERVA", Storage="_EMPLEADO", ThisKey="IDEMPLEADO", OtherKey="IDEMPLEADO", IsForeignKey=true)]
+		public EMPLEADO EMPLEADO
+		{
+			get
+			{
+				return this._EMPLEADO.Entity;
+			}
+			set
+			{
+				EMPLEADO previousValue = this._EMPLEADO.Entity;
+				if (((previousValue != value) 
+							|| (this._EMPLEADO.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EMPLEADO.Entity = null;
+						previousValue.RESERVA.Remove(this);
+					}
+					this._EMPLEADO.Entity = value;
+					if ((value != null))
+					{
+						value.RESERVA.Add(this);
+						this._IDEMPLEADO = value.IDEMPLEADO;
+					}
+					else
+					{
+						this._IDEMPLEADO = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("EMPLEADO");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DETALLERESERVA(DETALLERESERVA entity)
+		{
+			this.SendPropertyChanging();
+			entity.RESERVA = this;
+		}
+		
+		private void detach_DETALLERESERVA(DETALLERESERVA entity)
+		{
+			this.SendPropertyChanging();
+			entity.RESERVA = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DETALLERESERVA")]
+	public partial class DETALLERESERVA : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDRESERVA;
+		
+		private int _IDCLIENTE;
+		
+		private System.Nullable<int> _PRECIO;
+		
+		private System.Nullable<int> _IDFUNCION;
+		
+		private System.Nullable<int> _IDBUTACA;
+		
+		private System.Nullable<bool> _BHABILITADO;
+		
+		private EntityRef<CLIENTE> _CLIENTE;
+		
+		private EntityRef<FUNCION> _FUNCION;
+		
+		private EntityRef<RESERVA> _RESERVA;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDRESERVAChanging(int value);
+    partial void OnIDRESERVAChanged();
+    partial void OnIDCLIENTEChanging(int value);
+    partial void OnIDCLIENTEChanged();
+    partial void OnPRECIOChanging(System.Nullable<int> value);
+    partial void OnPRECIOChanged();
+    partial void OnIDFUNCIONChanging(System.Nullable<int> value);
+    partial void OnIDFUNCIONChanged();
+    partial void OnIDBUTACAChanging(System.Nullable<int> value);
+    partial void OnIDBUTACAChanged();
+    partial void OnBHABILITADOChanging(System.Nullable<bool> value);
+    partial void OnBHABILITADOChanged();
+    #endregion
+		
+		public DETALLERESERVA()
+		{
+			this._CLIENTE = default(EntityRef<CLIENTE>);
+			this._FUNCION = default(EntityRef<FUNCION>);
+			this._RESERVA = default(EntityRef<RESERVA>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDRESERVA
+		{
+			get
+			{
+				return this._IDRESERVA;
+			}
+			set
+			{
+				if ((this._IDRESERVA != value))
+				{
+					if (this._RESERVA.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDRESERVAChanging(value);
+					this.SendPropertyChanging();
+					this._IDRESERVA = value;
+					this.SendPropertyChanged("IDRESERVA");
+					this.OnIDRESERVAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDCLIENTE
+		{
+			get
+			{
+				return this._IDCLIENTE;
+			}
+			set
+			{
+				if ((this._IDCLIENTE != value))
+				{
+					if (this._CLIENTE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDCLIENTEChanging(value);
+					this.SendPropertyChanging();
+					this._IDCLIENTE = value;
+					this.SendPropertyChanged("IDCLIENTE");
+					this.OnIDCLIENTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRECIO", DbType="Int")]
+		public System.Nullable<int> PRECIO
+		{
+			get
+			{
+				return this._PRECIO;
+			}
+			set
+			{
+				if ((this._PRECIO != value))
+				{
+					this.OnPRECIOChanging(value);
+					this.SendPropertyChanging();
+					this._PRECIO = value;
+					this.SendPropertyChanged("PRECIO");
+					this.OnPRECIOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int")]
+		public System.Nullable<int> IDFUNCION
+		{
+			get
+			{
+				return this._IDFUNCION;
+			}
+			set
+			{
+				if ((this._IDFUNCION != value))
+				{
+					if (this._FUNCION.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDFUNCIONChanging(value);
+					this.SendPropertyChanging();
+					this._IDFUNCION = value;
+					this.SendPropertyChanged("IDFUNCION");
+					this.OnIDFUNCIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBUTACA", DbType="Int")]
+		public System.Nullable<int> IDBUTACA
+		{
+			get
+			{
+				return this._IDBUTACA;
+			}
+			set
+			{
+				if ((this._IDBUTACA != value))
+				{
+					this.OnIDBUTACAChanging(value);
+					this.SendPropertyChanging();
+					this._IDBUTACA = value;
+					this.SendPropertyChanged("IDBUTACA");
+					this.OnIDBUTACAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BHABILITADO", DbType="Bit")]
+		public System.Nullable<bool> BHABILITADO
+		{
+			get
+			{
+				return this._BHABILITADO;
+			}
+			set
+			{
+				if ((this._BHABILITADO != value))
+				{
+					this.OnBHABILITADOChanging(value);
+					this.SendPropertyChanging();
+					this._BHABILITADO = value;
+					this.SendPropertyChanged("BHABILITADO");
+					this.OnBHABILITADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CLIENTE_DETALLERESERVA", Storage="_CLIENTE", ThisKey="IDCLIENTE", OtherKey="IDCLIENTE", IsForeignKey=true)]
+		public CLIENTE CLIENTE
+		{
+			get
+			{
+				return this._CLIENTE.Entity;
+			}
+			set
+			{
+				CLIENTE previousValue = this._CLIENTE.Entity;
+				if (((previousValue != value) 
+							|| (this._CLIENTE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CLIENTE.Entity = null;
+						previousValue.DETALLERESERVA.Remove(this);
+					}
+					this._CLIENTE.Entity = value;
+					if ((value != null))
+					{
+						value.DETALLERESERVA.Add(this);
+						this._IDCLIENTE = value.IDCLIENTE;
+					}
+					else
+					{
+						this._IDCLIENTE = default(int);
+					}
+					this.SendPropertyChanged("CLIENTE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FUNCION_DETALLERESERVA", Storage="_FUNCION", ThisKey="IDFUNCION", OtherKey="IDFUNCION", IsForeignKey=true)]
+		public FUNCION FUNCION
+		{
+			get
+			{
+				return this._FUNCION.Entity;
+			}
+			set
+			{
+				FUNCION previousValue = this._FUNCION.Entity;
+				if (((previousValue != value) 
+							|| (this._FUNCION.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._FUNCION.Entity = null;
+						previousValue.DETALLERESERVA.Remove(this);
+					}
+					this._FUNCION.Entity = value;
+					if ((value != null))
+					{
+						value.DETALLERESERVA.Add(this);
+						this._IDFUNCION = value.IDFUNCION;
+					}
+					else
+					{
+						this._IDFUNCION = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("FUNCION");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="RESERVA_DETALLERESERVA", Storage="_RESERVA", ThisKey="IDRESERVA", OtherKey="IDRESERVA", IsForeignKey=true)]
+		public RESERVA RESERVA
+		{
+			get
+			{
+				return this._RESERVA.Entity;
+			}
+			set
+			{
+				RESERVA previousValue = this._RESERVA.Entity;
+				if (((previousValue != value) 
+							|| (this._RESERVA.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._RESERVA.Entity = null;
+						previousValue.DETALLERESERVA.Remove(this);
+					}
+					this._RESERVA.Entity = value;
+					if ((value != null))
+					{
+						value.DETALLERESERVA.Add(this);
+						this._IDRESERVA = value.IDRESERVA;
+					}
+					else
+					{
+						this._IDRESERVA = default(int);
+					}
+					this.SendPropertyChanged("RESERVA");
 				}
 			}
 		}

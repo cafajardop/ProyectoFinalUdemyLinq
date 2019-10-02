@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Transactions;
 
 namespace ProyectoFinalUdemyLinq
 {
@@ -137,19 +138,19 @@ namespace ProyectoFinalUdemyLinq
                 }
 
                 var consultaButacas = (from butaca in bd.BUTACA
-                                      join funcion in bd.FUNCION
-                                      on butaca.IDFUNCION equals
-                                      funcion.IDFUNCION
-                                      where funcion.IDFUNCION.Equals(idFuncion)
-                                      && butaca.BHABILITADO.Equals(true)
-                                      && butaca.BLIBRE.Equals(true)
-                                      select new
-                                      {
-                                          butaca.IDFUNCION,
-                                          butaca.IDBUTACA,
-                                          butaca.INDICEFILA,
-                                          butaca.INDICECOLUMNA
-                                      }).ToList();
+                                       join funcion in bd.FUNCION
+                                       on butaca.IDFUNCION equals
+                                       funcion.IDFUNCION
+                                       where funcion.IDFUNCION.Equals(idFuncion)
+                                       && butaca.BHABILITADO.Equals(true)
+                                       && butaca.BLIBRE.Equals(true)
+                                       select new
+                                       {
+                                           butaca.IDFUNCION,
+                                           butaca.IDBUTACA,
+                                           butaca.INDICEFILA,
+                                           butaca.INDICECOLUMNA
+                                       }).ToList();
 
                 dgvButacas.DataSource = consultaButacas;
 
@@ -213,7 +214,7 @@ namespace ProyectoFinalUdemyLinq
 
         private void ObtenerPrecio(object sender, EventArgs e)
         {
-            if(cboTipoEntrada.SelectedValue != null)
+            if (cboTipoEntrada.SelectedValue != null)
             {
                 int idfuncion = ((Funcion)cboFuncion.SelectedItem).idFuncion;
                 int idTipoEntrada = ((TipoEntrada)cboTipoEntrada.SelectedItem).IDTIPOENTRADA;
@@ -238,19 +239,19 @@ namespace ProyectoFinalUdemyLinq
         List<Reserva> listaReserva = new List<Reserva>();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if(txtCodigoEmpleado.Text.Equals(""))
+            if (txtCodigoEmpleado.Text.Equals(""))
             {
                 MessageBox.Show("Debe seleccionar el empleado que realizara la venta", "Aviso");
                 return;
             }
-            if(txtDNICliente.Text.Equals(""))
+            if (txtDNICliente.Text.Equals(""))
             {
                 MessageBox.Show("Debe ingresar el cliente", "Aviso");
                 return;
             }
             int idCliente = (int)dgvClientes.CurrentRow.Cells[0].Value;
             int idFuncion = ((Funcion)cboFuncion.SelectedItem).idFuncion;
-            int idButaca = (int)dgvButacas.CurrentRow.Cells[0].Value;
+            int idButaca = (int)dgvButacas.CurrentRow.Cells[1].Value;
             int idTipoEntrada = ((TipoEntrada)cboTipoEntrada.SelectedItem).IDTIPOENTRADA;
             decimal precio = decimal.Parse(txtprecio.Text);
             string nombreCliente = dgvClientes.CurrentRow.Cells[2].Value.ToString() + " " +
@@ -274,6 +275,27 @@ namespace ProyectoFinalUdemyLinq
                 nombrePelicula = nombrePelicula,
                 nombreSala = nombreSala
             };
+            var consultaButaca = (from item in listaReserva
+                                  where item.idFuncion.Equals(idFuncion)
+                                  && item.idButaca.Equals(idButaca)
+                                  select item).ToList();
+            int nbutacas = consultaButaca.Count;
+            if (nbutacas >= 1)
+            {
+                MessageBox.Show("Ya se agrego la butaca para esa funcion");
+                return;
+            }
+            var consultaPersona = (from item in listaReserva
+                                   where item.nombreCompleto.Equals(nombreCliente)
+                                   && item.idFuncion.Equals(idFuncion)
+                                   select item).ToList();
+            int npersonas = consultaPersona.Count;
+            if (npersonas >= 1)
+            {
+                MessageBox.Show("Ya se reservo un asiento a la persona para esa funcion", "Aviso");
+                return;
+            }
+
             listaReserva.Add(oReserva);
             listarDetalle();
             decimal suma = sumarMontos(listaReserva);
@@ -283,7 +305,7 @@ namespace ProyectoFinalUdemyLinq
         {
             int nelementos = listaReserva.Count;
             decimal suma = 0;
-            for(int i= 0;i<nelementos;i++)
+            for (int i = 0; i < nelementos; i++)
             {
                 suma += listaReserva[i].precio;
             }
@@ -294,25 +316,91 @@ namespace ProyectoFinalUdemyLinq
         {
             dgvDetalleReserva.DataSource = null;
             dgvDetalleReserva.DataSource = (from item in listaReserva
-                                           join funcion in bd.FUNCION
-                                           on item.idFuncion equals
-                                           funcion.IDFUNCION
-                                           join tipoEntrada in bd.TIPOENTRADA
-                                           on item.idTipoEntrada equals
-                                           tipoEntrada.IDTIPOENTRADA
-                                           select new
-                                           {
-                                               NombreCliente = item.nombreCompleto,
-                                               NombreCine = item.nombreCine,
-                                               NombrePelicula = item.nombrePelicula,
-                                               NombreSala = item.nombreSala,
-                                               FechaFuncion = funcion.FECHAFUNCION,
-                                               IdButaca = item.idButaca,
-                                               TipoEntrada = tipoEntrada.NOMBRE,
-                                               Precio = item.precio
+                                            join funcion in bd.FUNCION
+                                            on item.idFuncion equals
+                                            funcion.IDFUNCION
+                                            join tipoEntrada in bd.TIPOENTRADA
+                                            on item.idTipoEntrada equals
+                                            tipoEntrada.IDTIPOENTRADA
+                                            select new
+                                            {
+                                                NombreCliente = item.nombreCompleto,
+                                                NombreCine = item.nombreCine,
+                                                NombrePelicula = item.nombrePelicula,
+                                                NombreSala = item.nombreSala,
+                                                FechaFuncion = funcion.FECHAFUNCION,
+                                                IdButaca = item.idButaca,
+                                                TipoEntrada = tipoEntrada.NOMBRE,
+                                                Precio = item.precio
 
-                                           }).ToList();
+                                            }).ToList();
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DateTime fechaFuncion = (DateTime)dgvDetalleReserva.CurrentRow.Cells[4].Value;
+            string nombreCompleto = dgvDetalleReserva.CurrentRow.Cells[0].Value.ToString();
+            listaReserva.RemoveAll(p => p.fechaFuncion.Equals(fechaFuncion) && p.nombreCompleto.Equals(nombreCompleto));
+            listarDetalle();
+            decimal suma = sumarMontos(listaReserva);
+            txtPrecioTotal.Text = suma.ToString();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                using (var transaccion = new TransactionScope())
+                {
+                    int idCliente = int.Parse(txtDNICliente.Text);
+                    int idEmpleado = int.Parse(txtCodigoEmpleado.Text);
+                    decimal total = decimal.Parse(txtPrecioTotal.Text);
+                    RESERVA oReserva = new RESERVA
+                    {
+                        IDCLIENTE = idCliente,
+                        IDEMPLEADO = idEmpleado,
+                        TOTAL = total,
+                        BHABILITADO = true
+                    };
+                    bd.RESERVA.InsertOnSubmit(oReserva);
+                    bd.SubmitChanges();
+                    int idReserva = oReserva.IDRESERVA;
+
+                    int nlistaReserva = listaReserva.Count;
+                    for (int i = 0; i < nlistaReserva; i++)
+                    {
+                        int idfuncion = listaReserva[i].idFuncion;
+                        int idButaca = listaReserva[i].idButaca;
+                        DETALLERESERVA oDETALLERESERVA = new DETALLERESERVA
+                        {
+                            IDRESERVA = idReserva,
+                            IDCLIENTE = listaReserva[i].idCliente,
+                            PRECIO = int.Parse(listaReserva[i].precio.ToString()),
+                            IDFUNCION = listaReserva[i].idFuncion,
+                            IDBUTACA = listaReserva[i].idButaca,
+                            BHABILITADO = true
+                        };
+                        bd.DETALLERESERVA.InsertOnSubmit(oDETALLERESERVA);
+
+                        var butaca = bd.BUTACA.Where(p => p.IDFUNCION.Equals(idfuncion) && p.IDBUTACA.Equals(idButaca));
+                        foreach (var item in butaca)
+                        {
+                            item.BLIBRE = false;
+                        }
+                    }
+                    bd.SubmitChanges();
+                    transaccion.Complete();
+                    MessageBox.Show("Se guardo correctamente!!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error");
+            }
         }
     }
 }

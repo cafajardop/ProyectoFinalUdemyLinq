@@ -56,13 +56,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbxAgregar = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtprecio = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.cboTipoEntrada = new System.Windows.Forms.ComboBox();
             this.dgvDetalleReserva = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtprecio = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -383,6 +383,25 @@
             this.gbxAgregar.TabStop = false;
             this.gbxAgregar.Text = "Agregar";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(389, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "PRECIO";
+            // 
+            // txtprecio
+            // 
+            this.txtprecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtprecio.Location = new System.Drawing.Point(473, 27);
+            this.txtprecio.Name = "txtprecio";
+            this.txtprecio.ReadOnly = true;
+            this.txtprecio.Size = new System.Drawing.Size(141, 20);
+            this.txtprecio.TabIndex = 16;
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(716, 24);
@@ -391,6 +410,7 @@
             this.btnEliminar.TabIndex = 15;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -432,25 +452,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "TIPO DE ENTRADA";
             // 
-            // txtprecio
-            // 
-            this.txtprecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtprecio.Location = new System.Drawing.Point(473, 27);
-            this.txtprecio.Name = "txtprecio";
-            this.txtprecio.ReadOnly = true;
-            this.txtprecio.Size = new System.Drawing.Size(141, 20);
-            this.txtprecio.TabIndex = 16;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(389, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "PRECIO";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(270, 677);
@@ -459,6 +460,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 

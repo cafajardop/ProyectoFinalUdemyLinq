@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -75,6 +78,12 @@
     </Compile>
     <Compile Include="frmBuscarEmpleado.Designer.cs">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaEmpleadoscs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaEmpleadoscs.Designer.cs">
+      <DependentUpon>frmConsultaEmpleadoscs.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoCine.cs">
       <SubType>Form</SubType>
@@ -160,6 +169,12 @@
     <Compile Include="frmProcesoReserva.Designer.cs">
       <DependentUpon>frmProcesoReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReservaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReservaCliente.Designer.cs">
+      <DependentUpon>frmReservaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Funcion.cs" />
     <Compile Include="Pelicula.cs" />
     <Compile Include="Program.cs" />
@@ -176,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarEmpleado.resx">
       <DependentUpon>frmBuscarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaEmpleadoscs.resx">
+      <DependentUpon>frmConsultaEmpleadoscs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoCine.resx">
       <DependentUpon>frmMantenimientoCine.cs</DependentUpon>
@@ -219,6 +237,9 @@
     <EmbeddedResource Include="frmProcesoReserva.resx">
       <DependentUpon>frmProcesoReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReservaCliente.resx">
+      <DependentUpon>frmReservaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -228,6 +249,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
