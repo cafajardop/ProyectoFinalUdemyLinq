@@ -121,6 +121,12 @@
     <Compile Include="frmMantenimientoSala.Designer.cs">
       <DependentUpon>frmMantenimientoSala.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPeliculaPorGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeliculaPorGenero.Designer.cs">
+      <DependentUpon>frmPeliculaPorGenero.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoSala.resx">
       <DependentUpon>frmMantenimientoSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeliculaPorGenero.resx">
+      <DependentUpon>frmPeliculaPorGenero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopup.resx">
       <DependentUpon>frmPopup.cs</DependentUpon>

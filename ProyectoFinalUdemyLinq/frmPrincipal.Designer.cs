@@ -103,6 +103,7 @@
             this.peliculaPorGeneroToolStripMenuItem.Name = "peliculaPorGeneroToolStripMenuItem";
             this.peliculaPorGeneroToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.peliculaPorGeneroToolStripMenuItem.Text = "Pelicula por genero";
+            this.peliculaPorGeneroToolStripMenuItem.Click += new System.EventHandler(this.peliculaPorGeneroToolStripMenuItem_Click);
             // 
             // mantenimientoToolStripMenuItem
             // 

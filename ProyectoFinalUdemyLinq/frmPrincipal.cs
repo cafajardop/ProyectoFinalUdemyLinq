@@ -76,5 +76,11 @@ namespace ProyectoFinalUdemyLinq
             frmReservaCliente ofrmReservaCliente = new frmReservaCliente();
             ofrmReservaCliente.ShowDialog();
         }
+
+        private void peliculaPorGeneroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPeliculaPorGenero ofrmPeliculaPorGenero = new frmPeliculaPorGenero();
+            ofrmPeliculaPorGenero.ShowDialog();
+        }
     }
 }

@@ -90,6 +90,8 @@
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.cboCliente);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmReservaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Reserva Cliente";
