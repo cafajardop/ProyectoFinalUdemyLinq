@@ -49,13 +49,14 @@ namespace ProyectoFinalUdemyLinq
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
             listar();
+            dgvDetalle.DataSource = null;
         }
 
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
             int idEmpleado = ((EMPLEADO)cboEmpleado.SelectedItem).IDEMPLEADO;
             dgvReserva.DataSource = (from reserva in bd.RESERVA
-                                     join empleado in bd.EMPLEADO
+                                     join empleado in bd.EMPLEADO 
                                      on reserva.IDEMPLEADO equals
                                      empleado.IDEMPLEADO
                                      join cliente in bd.CLIENTE
